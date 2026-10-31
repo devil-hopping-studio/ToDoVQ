@@ -1,14 +1,14 @@
-import { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-type ThemeMode = 'light' | 'dark';
+export type ThemeMode = 'light' | 'dark';
 
-interface ThemeContextType {
+export interface ThemeContextType {
   theme: ThemeMode;
   toggleTheme: () => void;
   isDark: boolean;
 }
 
-const ThemeContext = createContext<ThemeContextType>({
+export const ThemeContext = createContext<ThemeContextType>({
   theme: 'dark',
   toggleTheme: () => {},
   isDark: true,

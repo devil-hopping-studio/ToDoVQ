@@ -89,22 +89,19 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }
 
       <View className="w-full pb-8">
         <View className="flex-row justify-center mb-6">
-          {SLIDES.map((_, index) => {
-            const isActive = currentIndex === index;
-            return (
-              <View
-                key={index}
-                className={`h-2 rounded-full mx-1 ${
-                  isActive ? 'w-8 bg-brand-primary' : 'w-2 bg-slate-600/40'
-                }`}
-              />
-            );
-          })}
+          {SLIDES.map((_, index) => (
+            <View
+              key={index}
+              className={`h-2 rounded-full mx-1 ${
+                currentIndex === index ? 'w-8 bg-brand-primary' : 'w-2 bg-slate-600/40'
+              }`}
+            />
+          ))}
         </View>
 
         <TouchableOpacity
           onPress={scrollToNext}
-          className="w-full py-4 rounded-xl bg-brand-primary items-center justify-center shadow-lg shadow-brand-primary/30"
+          className="w-full py-4 rounded-xl bg-brand-primary items-center justify-center"
         >
           <Text className="text-white font-semibold text-base">
             {currentIndex === SLIDES.length - 1 ? 'Get Started' : 'Next'}

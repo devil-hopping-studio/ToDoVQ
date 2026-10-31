@@ -1,6 +1,10 @@
 import { Task, RecurrenceUnit } from '../../models/Task';
 
-export const calculateNextDueDate = (currentDueDate: number, unit: RecurrenceUnit, intervalValue: number = 1): number => {
+export const calculateNextDueDate = (
+  currentDueDate: number,
+  unit: RecurrenceUnit,
+  intervalValue: number = 1
+): number => {
   const date = new Date(currentDueDate);
 
   switch (unit) {
@@ -25,8 +29,6 @@ export const calculateNextDueDate = (currentDueDate: number, unit: RecurrenceUni
     case 'years':
       date.setFullYear(date.getFullYear() + intervalValue);
       break;
-    default:
-      break;
   }
 
   return date.getTime();
@@ -37,11 +39,7 @@ export const handleTaskCompletion = (task: Task): { updatedTask: Task; nextTask?
 
   if (task.recurrence.type === 'one_off' || !task.recurrence.intervalUnit || !task.recurrence.intervalValue) {
     return {
-      updatedTask: {
-        ...task,
-        isCompleted: true,
-        updatedAt: now,
-      },
+      updatedTask: { ...task, isCompleted: true, updatedAt: now },
     };
   }
 
@@ -54,17 +52,13 @@ export const handleTaskCompletion = (task: Task): { updatedTask: Task; nextTask?
 
   if (task.recurrence.endDate && nextDueDate > task.recurrence.endDate) {
     return {
-      updatedTask: {
-        ...task,
-        isCompleted: true,
-        updatedAt: now,
-      },
+      updatedTask: { ...task, isCompleted: true, updatedAt: now },
     };
   }
 
   const nextTask: Task = {
     ...task,
-    id: `task_${now}_${Math.random().toString(36).substr(2, 9)}`,
+    id: `task_${now}_${Math.random().toString(36).slice(2, 9)}`,
     isCompleted: false,
     dueDate: nextDueDate,
     createdAt: now,
@@ -72,11 +66,7 @@ export const handleTaskCompletion = (task: Task): { updatedTask: Task; nextTask?
   };
 
   return {
-    updatedTask: {
-      ...task,
-      isCompleted: true,
-      updatedAt: now,
-    },
+    updatedTask: { ...task, isCompleted: true, updatedAt: now },
     nextTask,
   };
 };

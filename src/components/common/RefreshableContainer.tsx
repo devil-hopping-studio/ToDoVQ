@@ -7,10 +7,7 @@ interface RefreshableContainerProps {
   onRefresh: () => Promise<void>;
 }
 
-export const RefreshableContainer: React.FC<RefreshableContainerProps> = ({
-  children,
-  onRefresh,
-}) => {
+export const RefreshableContainer: React.FC<RefreshableContainerProps> = ({ children, onRefresh }) => {
   const [refreshing, setRefreshing] = useState(false);
   const [orientation, setOrientation] = useState<'portrait' | 'landscape'>(
     Dimensions.get('window').width > Dimensions.get('window').height ? 'landscape' : 'portrait'
