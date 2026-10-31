@@ -1,30 +1,41 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import { EisenhowerMatrixScreen } from '../screens/EisenhowerMatrixScreen';
+import React, { useState } from 'react';
+import { View, SafeAreaView } from 'react-native';
+import { SidebarDrawer } from '../components/navigation/SidebarDrawer';
 import { InboxScreen } from '../screens/InboxScreen';
-import { SettingsScreen } from '../screens/SettingsScreen';
 import { TodayScreen } from '../screens/TodayScreen';
+import { useTheme } from '../../src/utils/theme';
 
-export type RootStackParamList = {
-  Inbox: undefined;
-  Today: undefined;
-  EisenhowerMatrix: undefined;
-  Settings: undefined;
-};
+export const RootNavigator: React.FC = () => {
+  const [currentBucket, setCurrentBucket] = useState('inbox');
+  const { isDark } = useTheme();
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+  const renderScreen = () => {
+    switch (currentBucket) {
+      case 'today':
+        return <TodayScreen />;
+      case 'inbox':
+      default:
+        return <InboxScreen />;
+    }
+  };
 
-export function RootNavigator() {
   return (
-    <Stack.Navigator initialRouteName="Inbox">
-      <Stack.Screen name="Inbox" component={InboxScreen} />
-      <Stack.Screen name="Today" component={TodayScreen} />
-      <Stack.Screen
-        name="EisenhowerMatrix"
-        component={EisenhowerMatrixScreen}
-        options={{ title: 'Eisenhower Matrix' }}
-      />
-      <Stack.Screen name="Settings" component={SettingsScreen} />
-    </Stack.Navigator>
+    <SafeAreaView className={`flex-1 ${isDark ? 'bg-dark-bg' : 'bg-light-bg'}`}>
+      <View className="flex-1 flex-row">
+        <View className="w-64 border-r border-slate-700/10">
+          <SidebarDrawer
+            currentBucket={currentBucket}
+            onSelectBucket={setCurrentBucket}
+            onOpenSettings={() => console.log('Open Settings')}
+          />
+        </View>
+        <View className="flex-1">
+          {renderScreen()}
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+};
+>
   );
 }
