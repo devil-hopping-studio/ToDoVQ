@@ -1,0 +1,15 @@
+node_modules/
+.expo/
+dist/
+.env*
+*.log
+.DS_Store
+coverage/
+
+# Expo native builds
+android/
+ios/
+
+# Local IDE files
+.vscode/
+.idea/

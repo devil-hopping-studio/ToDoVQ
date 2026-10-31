@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "ToDoVQ",
+    "slug": "todovq",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "scheme": "todovq",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.devilhoppingstudio.todovq"
+    },
+    "android": {
+      "package": "com.devilhoppingstudio.todovq"
+    },
+    "plugins": ["expo-notifications", "expo-location"],
+    "extra": {
+      "eas": {
+        "projectId": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "todovq",
+  "version": "0.1.0",
+  "private": true,
+  "main": "expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format:check": "prettier --check .",
+    "test": "jest --passWithNoTests",
+    "ci": "npm run typecheck && npm run lint && npm run format:check && npm test"
+  },
+  "dependencies": {
+    "@nozbe/watermelondb": "^0.28.0",
+    "@react-navigation/native": "^7.0.14",
+    "@react-navigation/native-stack": "^7.1.15",
+    "expo": "^54.0.0",
+    "expo-location": "^19.0.7",
+    "expo-notifications": "^0.32.12",
+    "expo-task-manager": "^14.0.7",
+    "nativewind": "^4.1.23",
+    "react": "19.1.0",
+    "react-native": "0.81.4",
+    "react-native-safe-area-context": "^5.6.0",
+    "react-native-screens": "^4.16.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/react": "~19.1.10",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^9.38.0",
+    "eslint-config-expo": "^10.0.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.6.2",
+    "typescript": "~5.9.2"
+  }
+}
