@@ -24,6 +24,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
 
       - name: Set up JDK 17
         uses: actions/setup-java@v5
@@ -38,6 +39,13 @@ jobs:
         env:
           CI: true
         run: npx expo prebuild --platform android --clean
+
+      - name: Ensure Node.js is available in PATH for Gradle Codegen
+        run: |
+          which node
+          node -v
+          echo "NODE_PATH=$(dirname $(which node))" >> $GITHUB_ENV
+          echo "$(dirname $(which node))" >> $GITHUB_PATH
 
       - name: Grant Execute Permission for Gradlew
         working-directory: ./android
