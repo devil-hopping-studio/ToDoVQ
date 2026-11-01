@@ -7,6 +7,13 @@
     "userInterfaceStyle": "automatic",
     "android": {
       "package": "com.devilhoppingstudio.todovq"
-    }
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "newArchEnabled": false
   }
 }
